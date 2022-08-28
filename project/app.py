@@ -14,6 +14,11 @@ app.config.from_object(Config)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    return render_template('index.html')
+
+
+@app.route("/lol/", methods=["GET", "POST"])
+def lol():
     form = ProfileForm()
     if form.validate_on_submit():
         username = form.username.data
