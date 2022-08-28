@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect
+from flask_bootstrap import Bootstrap
 
 from forms import ProfileForm
 
@@ -10,6 +11,7 @@ class Config(object):
 app = Flask(__name__)
 
 app.config.from_object(Config)
+Bootstrap(app)
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -19,7 +21,14 @@ def index():
 
 @app.route("/game/", methods=["GET", "POST"])
 def game():
-    return render_template('game.html')
+    form = ProfileForm()
+    if form.validate_on_submit():
+        side_of_the_world = form.side_of_the_world.data
+        step = form.step.data
+        submit = form.submit.data
+        return render_template('game.html', form=form, side_of_the_world=side_of_the_world, step=step, submit=submit)
+    else:
+        return render_template('game.html', form=form)
 
 
 if __name__ == '__main__':

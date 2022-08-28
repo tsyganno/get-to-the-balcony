@@ -1,10 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField, PasswordField
+from wtforms import StringField, SubmitField, TextAreaField, PasswordField, IntegerField
 from wtforms.validators import DataRequired, Email, Length, InputRequired
 
 
 class ProfileForm(FlaskForm):
-    username = StringField('Имя пользователя', validators=[Length(max=32, min=5), InputRequired()])
-    password = PasswordField('Пароль', validators=[Length(max=24, min=9), InputRequired()])
-    about_me = TextAreaField('О себе')
+    side_of_the_world = StringField('Выберите сторону света, в которую желаете отправиться.', validators=[Length(max=32, min=0), InputRequired()])
+    step = IntegerField('Как далеко планируете продвинуться?', validators=[InputRequired()])
     submit = SubmitField('Принять')

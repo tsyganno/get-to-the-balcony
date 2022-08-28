@@ -225,11 +225,18 @@ nav {
     border-radius: 10px;
 }
 
-h2 {
+h1 {
     color: white;
     display: block;
     font-size: 1.5rem;
     margin: 110px;
+}
+
+h2 {
+    color: white;
+    display: block;
+    font-size: 1.5rem;
+    margin: 10px;
 }
 
 nav a {
