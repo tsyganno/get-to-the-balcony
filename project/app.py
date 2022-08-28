@@ -17,17 +17,9 @@ def index():
     return render_template('index.html')
 
 
-@app.route("/lol/", methods=["GET", "POST"])
-def lol():
-    form = ProfileForm()
-    if form.validate_on_submit():
-        username = form.username.data
-        about_me = form.about_me.data
-        password = form.password.data
-        submit = form.submit.data
-        return render_template('index.html', form=form, username=username, about_me=about_me, password=password)
-    else:
-        return render_template('index.html', form=form)
+@app.route("/game/", methods=["GET", "POST"])
+def game():
+    return render_template('game.html')
 
 
 if __name__ == '__main__':
