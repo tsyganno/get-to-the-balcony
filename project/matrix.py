@@ -2,12 +2,6 @@ class Matrix:
 
     def __init__(self):
         self.counter = 0
-        self.step_dict = {
-            0: 'Север',
-            1: 'Восток',
-            2: 'Юг',
-            3: 'Запад'
-        }
         self.matrix = [
             [0, 'Балкон', 0],
             ['Спальня', 'Холл', 'Кухня'],
@@ -16,11 +10,22 @@ class Matrix:
         self.location = 'Подземелье'
 
     def movement(self, path: int, step: int):
+        index_i = ''
+        index_j = ''
         for i in range(len(self.matrix)):
             for j in range(len(self.matrix[i])):
                 if self.matrix[i][j] == self.location:
                     index_i = i
                     index_j = j
+        if path == 1:
+            for i in range(len(self.matrix)):
+                for j in range(len(self.matrix[i])):
+                    if i == index_i and j == index_j + step:
+                        self.location = self.matrix[i][j]
+                        return self.location
+
+
+
 
 
 

@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 from flask_bootstrap import Bootstrap
 
 from forms import ProfileForm
+from matrix import Matrix
 
 
 class Config(object):
@@ -16,6 +17,8 @@ Bootstrap(app)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    global game
+    game = Matrix()
     return render_template('index.html')
 
 
@@ -26,9 +29,10 @@ def game():
         side_of_the_world = form.side_of_the_world.data
         step = form.step.data
         submit = form.submit.data
-        print(side_of_the_world)
-        print(step)
-        return render_template('game.html', form=form, side_of_the_world=side_of_the_world, step=step, submit=submit)
+
+        location = game.movement(side_of_the_world, step)
+
+        return render_template('game.html', form=form, side_of_the_world=side_of_the_world, step=step, submit=submit, location=location)
     else:
         return render_template('game.html', form=form)
 
