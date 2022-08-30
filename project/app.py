@@ -26,6 +26,8 @@ def game():
         side_of_the_world = form.side_of_the_world.data
         step = form.step.data
         submit = form.submit.data
+        print(side_of_the_world)
+        print(step)
         return render_template('game.html', form=form, side_of_the_world=side_of_the_world, step=step, submit=submit)
     else:
         return render_template('game.html', form=form)
