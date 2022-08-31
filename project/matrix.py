@@ -23,6 +23,13 @@ class Matrix:
                     if i == index_i and j == index_j + step:
                         self.location = self.matrix[i][j]
                         return self.location
+        elif path == 3:
+            for i in range(len(self.matrix)):
+                for j in range(len(self.matrix[i])):
+                    if i == index_i and j == index_j - step:
+                        self.location = self.matrix[i][j]
+                        return self.location
+
 
 
 
