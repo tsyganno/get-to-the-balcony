@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
 
 from forms import ProfileForm
@@ -24,17 +24,24 @@ def index():
 
 @app.route("/game/", methods=["GET", "POST"])
 def game():
-    form = ProfileForm()
-    if form.validate_on_submit():
-        side_of_the_world = form.side_of_the_world.data
-        step = form.step.data
-        submit = form.submit.data
+    if isinstance(game, Matrix):
+        form = ProfileForm()
+        if form.validate_on_submit():
+            side_of_the_world = form.side_of_the_world.data
+            step = form.step.data
+            submit = form.submit.data
+            print(step)
+            print(side_of_the_world)
 
-        location = game.movement(side_of_the_world, step)
-
-        return render_template('game.html', form=form, side_of_the_world=side_of_the_world, step=step, submit=submit, location=location)
+            location = game.movement(side_of_the_world, step)
+            if location is not None:
+                return render_template('game.html', form=form, side_of_the_world=side_of_the_world, step=step, submit=submit, location=location)
+            else:
+                return render_template('game.html', form=form, side_of_the_world=side_of_the_world, step=step, submit=submit, location='Вы не можете сюда идти!')
+        else:
+            return render_template('game.html', form=form)
     else:
-        return render_template('game.html', form=form)
+        return redirect(url_for('index'))
 
 
 if __name__ == '__main__':

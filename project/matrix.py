@@ -21,14 +21,31 @@ class Matrix:
             for i in range(len(self.matrix)):
                 for j in range(len(self.matrix[i])):
                     if i == index_i and j == index_j + step:
-                        self.location = self.matrix[i][j]
-                        return self.location
+                        if self.matrix[i][j] is not (None, 0):
+                            self.location = self.matrix[i][j]
+                            return self.location
         elif path == 3:
             for i in range(len(self.matrix)):
                 for j in range(len(self.matrix[i])):
                     if i == index_i and j == index_j - step:
-                        self.location = self.matrix[i][j]
-                        return self.location
+                        if self.matrix[i][j] is not (None, 0):
+                            self.location = self.matrix[i][j]
+                            return self.location
+        elif path == 0:
+            for i in range(len(self.matrix)):
+                for j in range(len(self.matrix[i])):
+                    if i == index_i - step and j == index_j:
+                        if self.matrix[i][j] is not (None, 0):
+                            self.location = self.matrix[i][j]
+                            return self.location
+        elif path == 2:
+            for i in range(len(self.matrix)):
+                for j in range(len(self.matrix[i])):
+                    if i == index_i + step and j == index_j:
+                        if self.matrix[i][j] is not (None, 0):
+                            self.location = self.matrix[i][j]
+                            return self.location
+
 
 
 
