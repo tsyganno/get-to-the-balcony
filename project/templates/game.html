@@ -15,5 +15,11 @@
         {{ form.submit }}
     </form>
     <br>
-    <h2>{{ location }}</h2>
+    <br>
+    {% if warning %}
+        <h2>{{ warning }}</h2>
+        <h2>Вы находитесь в "{{ location }}"</h2>
+    {% else %}
+        <h2>Вы попали в "{{ location }}"</h2>
+    {% endif %}
 {% endblock %}

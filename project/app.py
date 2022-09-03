@@ -30,16 +30,26 @@ def game():
             side_of_the_world = form.side_of_the_world.data
             step = form.step.data
             submit = form.submit.data
-            print(step)
-            print(side_of_the_world)
-
             location = game.movement(side_of_the_world, step)
             if location is not None:
-                return render_template('game.html', form=form, side_of_the_world=side_of_the_world, step=step, submit=submit, location=location)
+                return render_template(
+                    'game.html',
+                    form=form,
+                    side_of_the_world=side_of_the_world,
+                    step=step, submit=submit,
+                    location=location
+                )
             else:
-                return render_template('game.html', form=form, side_of_the_world=side_of_the_world, step=step, submit=submit, location='Вы не можете сюда идти!')
+                return render_template(
+                    'game.html',
+                    form=form,
+                    side_of_the_world=side_of_the_world,
+                    step=step, submit=submit,
+                    warning='Вы не можете сюда идти!',
+                    location=location
+                )
         else:
-            return render_template('game.html', form=form)
+            return render_template('game.html', form=form, location='Подземелье')
     else:
         return redirect(url_for('index'))
 
