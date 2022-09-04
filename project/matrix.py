@@ -45,16 +45,3 @@ class Matrix:
                         if self.matrix[i][j] is not None:
                             self.location = self.matrix[i][j]
                             return self.location
-
-
-
-
-
-
-
-
-
-
-
-
-
