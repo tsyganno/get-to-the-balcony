@@ -49,7 +49,11 @@ def game():
                     location=location
                 )
         else:
-            return render_template('game.html', form=form, location='Подземелье')
+            return render_template(
+                'game.html',
+                form=form,
+                instance='Вам нужно выбраться на балкон!',
+                location='Вы находитесь в "Подземелье".')
     else:
         return redirect(url_for('index'))
 
