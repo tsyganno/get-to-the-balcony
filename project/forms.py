@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField, PasswordField, IntegerField, SelectField
-from wtforms.validators import DataRequired, Email, Length, InputRequired, NumberRange
+from wtforms import SubmitField, IntegerField, SelectField
+from wtforms.validators import DataRequired, NumberRange
 
 
 class ProfileForm(FlaskForm):
@@ -18,7 +18,7 @@ class ProfileForm(FlaskForm):
         },
     )
     step = IntegerField(
-        'Как далеко планируете продвинуться?',
+        'Как далеко планируете продвинуться? (Шаги)',
         validators=[NumberRange(min=1), DataRequired()],
         default=1,
         render_kw={

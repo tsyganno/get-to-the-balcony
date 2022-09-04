@@ -4,7 +4,7 @@
     {% if warning %}
         <h2>{{ warning }} <br><br><br> Вы находитесь в "{{ location }}"</h2>
     {% elif instance %}
-        <h2>{{ location }} <br><br><br> {{ instance }}</h2>
+        <h2>{{ location }} <br><br><br> {{ instance }} <br><br><br> {{ surprise }}</h2>
     {% else %}
         <h2>Вы попали в "{{ location }}"</h2>
     {% endif %}

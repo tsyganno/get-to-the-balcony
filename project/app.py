@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
 
 from forms import ProfileForm
@@ -6,7 +6,7 @@ from matrix import Matrix
 
 
 class Config(object):
-    SECRET_KEY = 'lol'
+    SECRET_KEY = 'key'
 
 
 app = Flask(__name__)
@@ -20,6 +20,11 @@ def index():
     global game
     game = Matrix()
     return render_template('index.html')
+
+
+@app.route("/surprise/", methods=["GET", "POST"])
+def surprise():
+    return render_template('surprise.html')
 
 
 @app.route("/game/", methods=["GET", "POST"])
@@ -41,10 +46,7 @@ def game():
                     location=new_location
                 )
             elif new_location is not None and new_location == 'Балкон':
-                return render_template(
-                    'surprise.html',
-                    location=new_location
-                )
+                return redirect(url_for('surprise'))
             else:
                 return render_template(
                     'game.html',
@@ -59,6 +61,7 @@ def game():
                 'game.html',
                 form=form,
                 instance='Вам нужно выбраться на балкон!',
+                surprise='Там вас ждет награда!',
                 location='Вы находитесь в "Подземелье".')
     else:
         return redirect(url_for('index'))
