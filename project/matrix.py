@@ -3,7 +3,7 @@ class Matrix:
     def __init__(self):
         self.counter = 0
         self.matrix = [
-            [0, 'Балкон', 0],
+            [None, 'Балкон', None],
             ['Спальня', 'Холл', 'Кухня'],
             ['Подземелье', 'Коридор', 'Оружейная']
         ]
@@ -21,28 +21,28 @@ class Matrix:
             for i in range(len(self.matrix)):
                 for j in range(len(self.matrix[i])):
                     if i == index_i and j == index_j + step:
-                        if self.matrix[i][j] is not (None, 0):
+                        if self.matrix[i][j] is not None:
                             self.location = self.matrix[i][j]
                             return self.location
         elif path == 3:
             for i in range(len(self.matrix)):
                 for j in range(len(self.matrix[i])):
                     if i == index_i and j == index_j - step:
-                        if self.matrix[i][j] is not (None, 0):
+                        if self.matrix[i][j] is not None:
                             self.location = self.matrix[i][j]
                             return self.location
         elif path == 0:
             for i in range(len(self.matrix)):
                 for j in range(len(self.matrix[i])):
                     if i == index_i - step and j == index_j:
-                        if self.matrix[i][j] is not (None, 0):
+                        if self.matrix[i][j] is not None:
                             self.location = self.matrix[i][j]
                             return self.location
         elif path == 2:
             for i in range(len(self.matrix)):
                 for j in range(len(self.matrix[i])):
                     if i == index_i + step and j == index_j:
-                        if self.matrix[i][j] is not (None, 0):
+                        if self.matrix[i][j] is not None:
                             self.location = self.matrix[i][j]
                             return self.location
 
